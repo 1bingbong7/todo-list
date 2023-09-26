@@ -11,7 +11,7 @@ Ensure you have the following installed on your local development machine:
 Clone the repository:
 
 ```
-git clone 
+git clone https://github.com/1bingbong7/todo-list.git
 cd todo-list
 ```
 
@@ -33,5 +33,5 @@ The application will be running on http://localhost:5000.
 ### Running Tests
 
 ```
-npm test
+npm run test
 ```
