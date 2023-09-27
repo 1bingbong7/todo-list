@@ -33,7 +33,7 @@ The application will be running on http://localhost:5000.
 ### Running Tests
 
 ```
-npm run test
+npm test
 ```
 
 
