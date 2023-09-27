@@ -1,6 +1,7 @@
+require("dotenv").config()
 const mongoose = require("mongoose");
 
-const url = "mongodb+srv://todolist:ep9OQKApBjsKZjKd@todolistproject.szdoigv.mongodb.net/?retryWrites=true&w=majority";
+const url = process.env.MONGODB_URL || "";
 
 const connectToDB = async() => {
     await mongoose.connect(url, {
