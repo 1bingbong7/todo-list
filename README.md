@@ -35,3 +35,8 @@ The application will be running on http://localhost:5000.
 ```
 npm run test
 ```
+
+
+### API Documentation
+
+[View the full API documentation here.](https://documenter.getpostman.com/view/13015229/2s9YJXaR2q)
