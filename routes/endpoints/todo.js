@@ -10,7 +10,7 @@ const {
 module.exports = (app) => {
     let routes = require("express").Router();
 
-    routes.post("/", async(req, res) => {
+    routes.post("/", async(req, res, next) => {
         try {
             const result = await addTodo(req.body);
             return res.send({
@@ -18,13 +18,11 @@ module.exports = (app) => {
                 data: result,
             });
         } catch (error) {
-            return res.status(error.statusCode || 500).send({
-                message: error.message  || "Internal Server Error",
-            })
+            next(error);
         }
     });
 
-    routes.get("/", async(req, res) => {
+    routes.get("/", async(req, res, next) => {
         try {
             const { options, query } = getRequestQuery(req.query);
             const result = await getTodoList(options, query);
@@ -33,13 +31,11 @@ module.exports = (app) => {
                 data: result,
             });
         } catch (error) {
-            return res.status(error.statusCode || 500).send({
-                message: error.message  || "Internal Server Error",
-            })
+            next(error);
         }
     });
 
-    routes.put("/:id", async(req, res) => {
+    routes.put("/:id", async(req, res, next) => {
         try {
             const result = await updateTodo(req.params.id, req.body);
             return res.send({
@@ -47,13 +43,11 @@ module.exports = (app) => {
                 data: result,
             });
         } catch (error) {
-            return res.status(error.statusCode || 500).send({
-                message: error.message  || "Internal Server Error",
-            })
+            next(error);
         }
     })
 
-    routes.delete("/:id", async(req, res) =>{
+    routes.delete("/:id", async(req, res, next) =>{
         try {
             const result = await deleteTodo(req.params.id);
             return res.send({
@@ -61,13 +55,11 @@ module.exports = (app) => {
                 data: result
             });
         } catch (error) {
-            return res.status(error.statusCode || 500).send({
-                message: error.message  || "Internal Server Error",
-            })
+            next(error);
         }
     })
 
-    routes.get("/:id", async(req, res) => {
+    routes.get("/:id", async(req, res, next) => {
         try {
             const result = await getTodo(req.params.id);
             return res.send({
@@ -75,9 +67,7 @@ module.exports = (app) => {
                 data: result,
             });
         } catch (error) {
-            return res.status(error.statusCode || 500).send({
-                message: error.message  || "Internal Server Error",
-            })
+            next(error);
         }
     })
 
