@@ -7,12 +7,12 @@ const { addTodo } = require('../model/todo');
 
 let todo;
 beforeAll(async () => {
-    connectToDB();
+    await connectToDB();
     todo = await addTodo({
         title: "Test todo",
         description: "This is a sample"
     });
-});
+}, 60000);
 
 afterAll(async () => {
     await mongoose.disconnect();
